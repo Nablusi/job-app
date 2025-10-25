@@ -8,6 +8,12 @@
         "framework"
     ],
     "license": "MIT",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/Nablusi/job-shared.git"
+        }
+    ],
     "require": {
         "php": "^8.2",
         "laravel/framework": "^12.0",
@@ -16,12 +22,6 @@
         "openai-php/laravel": "^0.17.1",
         "spatie/pdf-to-text": "^1.54"
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/Nablusi/job-shared.git"
-        }
-    ],
     "require-dev": {
         "fakerphp/faker": "^1.23",
         "laravel/breeze": "^2.3",
