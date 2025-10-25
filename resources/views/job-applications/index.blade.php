@@ -26,8 +26,11 @@
                     </div>
 
                     <div class="flex items-center gap-2">
-                        <span>Applied with: {{ $jobApplication->resume->filename }}  </span>
-                        <a href="{{ Storage::disk('public')->url($jobApplication->resume->fileUri)}}" target="_blank" class="text-indigo-400 underline">View Resume</a>
+                        <span>Applied with: {{ $jobApplication->resume->filename }} </span>
+                        <a href="{{ $jobApplication->resume->fileUri }}" target="_blank" class="text-indigo-400 underline">
+                            View Resume
+                        </a>
+
                     </div>
                     @php
                         $status = $jobApplication->status;
@@ -45,11 +48,13 @@
                     <div class="flex items-start flex-col gap-2 mt-4">
                         <div class="flex gap-2">
 
-                            <p class="text-sm {{ $statusColorClass }}  text-white p-2 rounded-md w-fit">Status: {{ $jobApplication->status }}  </p>
-                            <p class="text-sm bg-indigo-500 text-white p-2 rounded-md w-fit">Score: {{ $jobApplication->aiGeneratedScore }}  </p>
+                            <p class="text-sm {{ $statusColorClass }}  text-white p-2 rounded-md w-fit">Status:
+                                {{ $jobApplication->status }} </p>
+                            <p class="text-sm bg-indigo-500 text-white p-2 rounded-md w-fit">Score:
+                                {{ $jobApplication->aiGeneratedScore }} </p>
                         </div>
 
-                        <p class="text-sm">AI Feedback: {{ $jobApplication->aiGeneratedFeedback }}  </p>
+                        <p class="text-sm">AI Feedback: {{ $jobApplication->aiGeneratedFeedback }} </p>
                     </div>
 
                 </div>

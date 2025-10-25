@@ -11,6 +11,7 @@ use App\Models\JobVacancy;
 use OpenAI\Laravel\Facades\OpenAI;
 use App\Http\Requests\ApplyJobRequest;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class JobVacancyController extends Controller
 {
@@ -48,8 +49,9 @@ class JobVacancyController extends Controller
             $fileName = 'resume_' . time() . '.' . $extension;
 
             //store in laravel cloud storage
-            $path = $file->storeAs('resumes', $fileName, 'public');
-            $fileUrl = config('filesystems.disks.public.url') . '/' . $path;
+            $path = $file->storeAs('resumes', $fileName, 'cloud');
+            $fileUrl = Storage::disk('cloud')->url($path);
+
 
             $extractedInfo = $this->resumeAnalysisService->extractResumeInformation($fileUrl);
 
