@@ -18,8 +18,8 @@
     },
     "repositories": [
         {
-            "type": "path",
-            "url": "../job-shared"
+            "type": "vcs",
+            "url": "https://github.com/Nablusi/job-shared.git"
         }
     ],
     "require-dev": {
