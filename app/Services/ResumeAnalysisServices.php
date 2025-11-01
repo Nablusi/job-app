@@ -10,7 +10,7 @@ class ResumeAnalysisServices
 {
     public function extractResumeInformation(string $fileUrl)
     {
-        ini_set('max_execution_time', 700);
+        ini_set('max_execution_time', 500);
         try {
 
             // Extract raw text from the resume using an external service or library
@@ -88,11 +88,11 @@ class ResumeAnalysisServices
 
         $storagePath = "resumes/" . $filename;
 
-        if (!Storage::disk('public')->exists($storagePath)) {
-            throw new \Exception("File does not exist in public storage");
+        if (!Storage::disk('cloud')->exists($storagePath)) {
+            throw new \Exception("File does not exist in cloud storage");
         }
 
-        $pdfContent = Storage::disk('public')->get($storagePath);
+        $pdfContent = Storage::disk('cloud')->get($storagePath);
 
 
         if (!$pdfContent) {
@@ -142,7 +142,7 @@ class ResumeAnalysisServices
 
     public function analyzeResume($jobVacancy, $resumeData)
     {
-        ini_set('max_execution_time', 500);
+        ini_set('max_execution_time', 100);
 
         try {
             $jobDetails = json_encode([
@@ -174,7 +174,7 @@ class ResumeAnalysisServices
                     ]
                 ],
                 'response_format' => [
-                    'type' => 'json_object'
+                    'type' => 'json_object',
                 ],
             ]);
 
